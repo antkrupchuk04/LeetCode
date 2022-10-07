@@ -6,12 +6,21 @@ struct node
     node* next;
 };
 
-node* CreateNode(int data)
+node* ReverseLinkList(node* head)
 {
-    node* newNode = (node*)malloc(sizeof(node));
-    newNode -> data = data;
+    node* prevNode = NULL;
+    node* nextNode = NULL;
+    node* currentNode = head;
 
-    return newNode;
+    while(currentNode)
+    {
+        nextNode = currentNode -> next;
+        currentNode -> next = prevNode;
+        prevNode = currentNode;
+        currentNode = nextNode;
+    }
+
+    return prevNode;
 }
 
 node* InitLinkList(int num)
@@ -61,19 +70,3 @@ int free_LinkList(node* head)
     return 0;
 }
 
-node* ReverseLinkList(node* head)
-{
-    node* prevNode = NULL;
-    node* nextNode = NULL;
-    node* currentNode = head;
-
-    while(currentNode)
-    {
-        nextNode = currentNode -> next;
-        currentNode -> next = prevNode;
-        prevNode = currentNode;
-        currentNode = nextNode;
-    }
-
-    return prevNode;
-}

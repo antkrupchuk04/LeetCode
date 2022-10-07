@@ -8,6 +8,7 @@ int main()
     node* head = InitLinkList(12345);
     node* middle = middleNode(head);
     
+    printLinkList(head);
     printf("\nMiddle Node: %d\n", middle -> data);
 
     free_LinkList(head);

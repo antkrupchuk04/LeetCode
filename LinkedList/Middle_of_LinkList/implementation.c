@@ -1,11 +1,33 @@
 #include "header.h"
 
-node* CreateNode(int data)
+node* middleNode(node* head)
 {
-    node* newNode = (node*)malloc(sizeof(node));
-    newNode -> data = data;
+    int length = 0;
+    node* copy = head;
 
-    return newNode;
+    while(head) // Getting length of Linked List
+    {
+        length++;
+        head = head -> next;
+    }
+
+    if((length % 2) == 0)
+    {
+        length = (length / 2);
+        for(int i = 0; i < length; i++)
+        {
+            copy = copy -> next;
+        }
+        return copy;
+    }
+
+    length = (length / 2) + 0.5;
+    for(int i = 0; i < length; i++)
+    {
+        copy = copy -> next;
+    }
+    
+    return copy;
 }
 
 node* InitLinkList(int num)
@@ -55,32 +77,3 @@ int free_LinkList(node* head)
     return 0;
 }
 
-node* middleNode(node* head)
-{
-    int length = 0;
-    node* copy = head;
-
-    while(head) // Getting length of Linked List
-    {
-        length++;
-        head = head -> next;
-    }
-
-    if((length % 2) == 0)
-    {
-        length = (length / 2);
-        for(int i = 0; i < length; i++)
-        {
-            copy = copy -> next;
-        }
-        return copy;
-    }
-
-    length = (length / 2) + 0.5;
-    for(int i = 0; i < length; i++)
-    {
-        copy = copy -> next;
-    }
-    
-    return copy;
-}
